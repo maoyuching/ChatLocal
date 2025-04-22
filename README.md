@@ -30,6 +30,7 @@ A RAG (Retrieval-Augmented Generation) based Q&A system that combines AnyTxt sea
 - Kimi和/或DeepSeek的API密钥
 
 ## project structure / 项目结构
+```
 src/
 ├── core/                # Core services
 │   ├── anyTxtService.js  # AnyTxt integration
@@ -38,6 +39,7 @@ src/
 │   └── mainProcess.js   # Main processing logic
 ├── webui/               # Web interface
 └── run.js               # Main API entry
+```
 
 ## Setup / 设置
 
