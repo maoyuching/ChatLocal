@@ -1,0 +1,10 @@
+# Node.js
+node_modules/
+.npm
+.node_repl_history
+
+# 可选：同时排除其他开发环境文件
+.env
+.DS_Store
+dist/
+*.log

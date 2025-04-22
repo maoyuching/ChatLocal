@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat 403</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <style>
+        /* 添加Markdown样式 */
+        .message p {
+            white-space: pre-wrap;
+        }
+
+        .message code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .message pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+
+        .message blockquote {
+            border-left: 4px solid #ddd;
+            padding-left: 15px;
+            color: #777;
+            margin-left: 0;
+        }
+
+        /* Add these styles to your existing style block */
+        .message strong,
+        .message b {
+            font-weight: bold !important;
+        }
+
+        .message em,
+        .message i {
+            font-style: italic !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chat 403</h1>
+        <div id="chat-container">
+            <% messages.forEach(message=> { %>
+                <div class="message <%= message.role %>">
+                    <strong>
+                        <%= message.role==='user' ? '你' : 'AI助手' %>:
+                    </strong>
+                    <p><%- message.content %></p>
+                </div>
+                <% }); %>
+        </div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="输入你的问题..." required>
+            <button type="submit">发送</button>
+        </form>
+    </div>
+    <script src="/js/chat.js"></script>
+    <script src="/js/marked.min.js"></script>
+    <script>
+        // 在页面加载时解析所有消息中的Markdown
+        document.addEventListener('DOMContentLoaded', () => {
+            // 配置marked
+            marked.setOptions({
+                breaks: true,  // 保留换行
+                sanitize: false,  // 不过滤HTML标签
+                gfm: true,  // 启用GitHub风格的Markdown
+                headerIds: false,
+                mangle: false,
+                silent: true
+            });
+
+            document.querySelectorAll('.message p').forEach(el => {
+                el.innerHTML = marked.parse(el.textContent);
+            });
+        });
+    </script>
+</body>
+
+</html>

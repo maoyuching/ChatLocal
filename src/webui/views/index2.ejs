@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastTxtSeek Chat</title>
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Chat 403</h1>
+        <div id="chat-container">
+            <% messages.forEach(message => { %>
+                <div class="message <%= message.role %>">
+                    <strong><%= message.role === 'user' ? '你' : 'AI助手' %>:</strong>
+                    <p><%= message.content %></p>
+                </div>
+            <% }); %>
+        </div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="输入你的问题..." required>
+            <button type="submit">发送</button>
+        </form>
+    </div>
+    <script src="/js/chat.js"></script>
+</body>
+</html>
